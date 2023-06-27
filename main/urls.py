@@ -10,7 +10,7 @@ urlpatterns = [
 
 # This will pass an id variable, encapsulating the in, to the index funcion
 path("<int:id>", views.index, name="index"),
-
+path("",views.home, name="home")
 
 
 ]
