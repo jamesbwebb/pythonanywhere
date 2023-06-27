@@ -1,0 +1,87 @@
+/* This is a partial blocks.css, you need to add more rules
+   to this file to complete the assignment.  Do not add any CSS
+   styling to the original index.htm / start.htm */
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Here is one of many  CSS rules you will need... */
+/*Use "Fixed position" Box width = 25% so it scales with the browser.*/
+/*Looking to locate id's "one"(bot right), "two"(top right), "three"(top left), "four"(bot right), */
+/* and "link"(top center) Use dev console inspect element to get link text and background colors */
+/*border: 5px solid red;*/
+#one {
+border: 5px solid blue;
+margin: 5px;
+padding: 5px;
+width: 25%;
+position: fixed;
+right: 0%;
+bottom: 0%;
+}
+
+#two {
+border: 5px solid green;
+margin: 5px;
+padding: 5px;
+width: 25%;
+position: fixed;
+right: 0%;
+top: 0%;
+}
+
+#three {
+border: 5px solid orange;
+margin: 5px;
+padding: 5px;
+width: 25%;
+position: fixed;
+top: 0%;
+left: 0%;
+
+}
+
+#four {
+border: 5px solid yellow;
+margin: 5px;
+padding: 5px;
+width: 25%;
+position: fixed;
+left: 0%;
+bottom: 0%;
+}
+
+#link {
+width: 47.859px;
+height: 20px;
+margin: 0px auto;
+padding: 15px;
+background: #0a4b33;
+
+/*color: #5e5e5e;*/
+
+}
+
+a:link {
+text-decoration: none;
+/*background-color: #ffffff;*/
+font-family: 'Roboto', Corbel, Avenir, 'Lucida Grande', 'Lucida Sans', sans-serif;
+font-size: 28px;
+color: #ffffff;
+}
+
+a:visited {
+text-decoration: none;
+color: #ffffff;
+}
+
+a:hover {
+text-decoration: none;
+color: #ffffff;
+}
+
+a:active {
+text-decoration: none;
+color: #ffffff;
+}

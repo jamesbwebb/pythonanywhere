@@ -1,0 +1,40 @@
+Assignment: Cascading Style Sheets
+In this assignment you will develop a Cascading Style Sheet (CSS) to control, the look, feel, and layout of some provided HTML content.
+
+The HTML assignment sets up your application to serve static files and we will need that set up to do this assignment.
+
+In this assignment, you will transform from this:
+<Image here>
+
+Using only CSS.
+Resources
+There are several sources of information so you can do the assignment:
+
+Lectures and materials on Cascading Style Sheets from www.dj4e.com
+
+Tasks:
+
+Here are the tasks for this assignment. These tasks can be done by editing HTML and CSS files in your `site` folder on PythonAnywhere.
+
+Edit the blocks.css and add the CSS rules so the HTML file looks like the above image when you view
+
+https://your-account.pythonanywhere.com/site/css/index.htm
+file in your browser. (Example that *looks* correct but is not a solution at all)
+The four boxes have five pixel borders with different colors and five pixels of margin and padding. It is probably simplest to use fixed positioning to get the boxes to be "sticky"
+to the corners of the screen even when you resize. Make the boxes width be 25% so the width changes as you resize your browser.
+
+Center the link at the top of the page. Use your developer console / inspect element feature of your browser to visit https://www.dj4e.com/ and figure out the background color, 
+font, and text color used in the top navigation bar and replicate for the link to DJ4E in your index.htm.
+
+You might find that using the border shortcut in your CSS instead of the separate "border" values makes the CSS validtor "happier".
+Your CSS must pass the validator at:
+
+https://jigsaw.w3.org/css-validator
+
+
+What To Hand In
+For this assignment you will hand in:
+
+Image (JPG or PNG) of your index.htm with the styling applied
+Image (JPG or PNG) of the source code of your blocks.css file
+Image (JPG or PNG) of your blocks.css passing the W3 CSS validator
