@@ -23,7 +23,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
 #    path('ads/', include('ads.urls)),
-    path('', include('main.urls')),
+#    path('create/', include('main.urls')),
+    path('main/', include('main.urls')),
     path('ads/', include('ads.urls')),  # Change to ads.urls
     path('admin/', admin.site.urls),  # Keep
     path('accounts/', include('django.contrib.auth.urls')),  # Keep

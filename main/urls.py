@@ -1,6 +1,6 @@
 from django.urls import path
-
 from . import views
+
 # I don't know what purpose the "app_name" variable serves...
 app_name = 'main'
 
@@ -10,7 +10,7 @@ urlpatterns = [
 
 # This will pass an id variable, encapsulating the in, to the index funcion
 path("<int:id>", views.index, name="index"),
-path("",views.home, name="home")
-
+path("",views.home, name="home"),
+path("create/", views.create, name="create"),
 
 ]
