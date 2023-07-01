@@ -23,6 +23,7 @@ from django.views.generic import TemplateView
 from register import views as v
 
 urlpatterns = [
+    path('', include('main.urls')),
 #    path('ads/', include('ads.urls)),
     path('register/', v.register, name ="register"),
     path('main/', include('main.urls')),
