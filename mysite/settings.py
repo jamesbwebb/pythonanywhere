@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'register.apps.RegisterConfig',
 
     # Extensions - installed with pip3 / requirements.txt
     'django_extensions',

@@ -20,10 +20,11 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.views.static import serve
 from django.views.generic import TemplateView
+from register import views as v
 
 urlpatterns = [
 #    path('ads/', include('ads.urls)),
-#    path('create/', include('main.urls')),
+    path('register/', v.register, name ="register"),
     path('main/', include('main.urls')),
     path('ads/', include('ads.urls')),  # Change to ads.urls
     path('admin/', admin.site.urls),  # Keep
