@@ -7,7 +7,6 @@ from .forms import CreateNewList
 def index(response, id):
 # This is a database query using the id# passed into the url
 	ls = ToDoList.objects.get(id=id)
-
 	if response.method == "POST":
 # This checks to see which button was clicked to init the post request
 		if response.POST.get("save"):
@@ -37,7 +36,6 @@ def home(response):
 def create(response):
 	if response.method == "POST":
 		form = CreateNewList(response.POST)
-
 		if form.is_valid():
 			n = form.cleaned_data["name"]
 			t = ToDoList(name=n)
