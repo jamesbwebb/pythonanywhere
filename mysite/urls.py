@@ -24,6 +24,7 @@ from register import views as v
 
 urlpatterns = [
 
+#    path('view/', v.view, name="view"),
     path('', include("django.contrib.auth.urls")),
     path('', include('main.urls')),
 #    path('ads/', include('ads.urls)),

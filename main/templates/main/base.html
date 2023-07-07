@@ -19,7 +19,7 @@
 			padding:6px 8px 6px 16px;
 			text-decoration: none;
 			font-size:25px;
-			color: #818181;
+			color: #f1f1f1;
 			display:block;
 		}
 
@@ -44,11 +44,21 @@
 
 <body>
 	<div class="sidenav">
-		<a href="/main">Home</a>
-		<a href="/main/create">Create</a>
-		<a href="/main/2">View</a>
-		<a href="/login">Login</a>
-		<a href="/register">Register</a>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/main">Home</a></button>
+		<br></br>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/main/create">Create</a></button>
+		<br></br>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/view">View</a></button>
+		<br></br>
+		{% if user.is_authenticated %}
+		<button type="button" class="btn btn-primary btn-lg"><a href="/logout">Logout</a></button>
+		<br></br>
+		{% else %}
+		<button type="button" class="btn btn-primary btn-lg"><a href="/login">Login</a></button>
+		<br></br>
+		{% endif %}
+		<button type="button" class="btn btn-primary btn-lg"><a href="/register">Register</a></button>
+		<br></br>
 	</div>
 
 	<div id="content", name="content", class="main">

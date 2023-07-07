@@ -1,0 +1,10 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+	{% for td in user.todolist.all %}
+		<p><button type="button" class="btn btn-outline-primary"><a href="/{{td.id}}">{{td.name}}</button></p>
+	{% endfor %}
+{% endblock %}

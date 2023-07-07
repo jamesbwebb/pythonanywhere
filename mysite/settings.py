@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+
     'main.apps.MainConfig',
     'ads.apps.AdsConfig',
     'django.contrib.admin',
