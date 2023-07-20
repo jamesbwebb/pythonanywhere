@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'register.apps.RegisterConfig',
+    'learnkana.apps.LearnkanaConfig',
 
     # Extensions - installed with pip3 / requirements.txt
     'django_extensions',

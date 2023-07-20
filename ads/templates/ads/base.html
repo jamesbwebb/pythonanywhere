@@ -44,16 +44,21 @@
 
 <body>
 	<div class="sidenav">
-		<button type="button" class="btn btn-primary btn-lg"><a href="/main">Home</a></button><br></br>
-		<button type="button" class="btn btn-primary btn-lg"><a href="/learn">Learn Kana!</a></button><br><br>
-		<button type="button" class="btn btn-primary btn-lg"><a href="/main/create">Create</a></button><br></br>
-		<button type="button" class="btn btn-primary btn-lg"><a href="/view">View</a></button><br></br>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/ads">Home</a></button>
+		<br></br>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/ads/create">Create</a></button>
+		<br></br>
+<!--		<button type="button" class="btn btn-primary btn-lg"><a href="/view">View</a></button>
+		<br></br>-->
 		{% if user.is_authenticated %}
-		<button type="button" class="btn btn-primary btn-lg"><a href="/logout">Logout</a></button><br></br>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/logout">Logout</a></button>
+		<br></br>
 		{% else %}
-		<button type="button" class="btn btn-primary btn-lg"><a href="/login">Login</a></button><br></br>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/login">Login</a></button>
+		<br></br>
 		{% endif %}
-		<button type="button" class="btn btn-primary btn-lg"><a href="/register">Register</a></button><br></br>
+		<button type="button" class="btn btn-primary btn-lg"><a href="/register">Register</a></button>
+		<br></br>
 	</div>
 
 	<div id="content", name="content", class="main">

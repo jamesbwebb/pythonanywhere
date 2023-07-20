@@ -1,0 +1,30 @@
+Project goals:
+
+Create a kana flash card styled web app.
+
+Requirements:
+
+I'll have to source some images, both the individual characters and the full chart.
+Text box + stubmit button # look to files in mysite/main for reference.
+Validation:
+if answer.isvalid # check syntax
+	if lower(answer) == correct:
+		something
+	else:
+		shows correct answer
+else:
+	use the integrated django stuff for this part, look to the mysite/main app for references
+
+Path to goal:
+1: Create text box + submit button
+2: Create simple validation, base this off the above example
+3: Create both pass and fail cases
+4: Image integration, start with one static, then add the rest and randomize.
+
+I think I'll have to pass info with a simple form/ post request
+Create a database entry for the correct answers.
+
+Extras: Add a next or skip button.
+
+
+Google linguistics api?

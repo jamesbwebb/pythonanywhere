@@ -25,16 +25,17 @@ from register import views as v
 urlpatterns = [
 
 #    path('view/', v.view, name="view"),
-    path('', include("django.contrib.auth.urls")),
+#    path('', include("django.contrib.auth.urls")),
     path('', include('main.urls')),
-#    path('ads/', include('ads.urls)),
+    path('ads/', include('ads.urls')),
     path('signup/', v.register, name="register"), # Redirect
     path('register/', v.register, name="register"),
     path('main/', include('main.urls')),
     path('ads/', include('ads.urls')),  # Change to ads.urls
     path('admin/', admin.site.urls),  # Keep
-    path('accounts/', include('django.contrib.auth.urls')),  # Keep
+    path('', include('django.contrib.auth.urls')),  # Keep
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
+    path('', include('learnkana.urls')),
 
 ]
 
