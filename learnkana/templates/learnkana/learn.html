@@ -1,11 +1,16 @@
 {% extends "main/base.html" %}
 
-{% block title %}
-Learn Kana
-{% endblock %}
+{% block title %} Learn Kana {% endblock %}
 
 {% block content %}
-
 <h1>Learn Kana!</h1>
-
+<form method="post" action="/main/create/" class="form-group">
+	{% csrf_token %}
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<button type="submit", name="save", class="btn btn-success">Submit</button>
+		</div>
+		{{form.name}}
+	</div>
+</form>
 {% endblock %}
