@@ -27,10 +27,9 @@ urlpatterns = [
 #    path('view/', v.view, name="view"),
 #    path('', include("django.contrib.auth.urls")),
     path('', include('main.urls')),
-    path('ads/', include('ads.urls')),
     path('signup/', v.register, name="register"), # Redirect
     path('register/', v.register, name="register"),
-    path('main/', include('main.urls')),
+#    path('main/', include('main.urls')),
     path('ads/', include('ads.urls')),  # Change to ads.urls
     path('admin/', admin.site.urls),  # Keep
     path('', include('django.contrib.auth.urls')),  # Keep
