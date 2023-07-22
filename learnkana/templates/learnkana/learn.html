@@ -4,10 +4,21 @@
 
 {% block content %}
 <h1>Learn Kana!</h1>
-<form method="post" action="/main/create/" class="form-group">
+<!-- load kana here -->
+<!-- This will have to be a randomized variable later -->
+
+<h3>&#12354;</h3>
+	{% for k in lk %}
+		<p>{{k.name}}</p>
+		<br>
+		<p>{{k.hir}} </p>
+	{% endfor %}
+<!-- the "action" is what happens on click  -->
+<form method="post" action="#" class="form-group">
 	{% csrf_token %}
 	<div class="input-group mb-3">
 		<div class="input-group-prepend">
+			<input type="text", name="new">
 			<button type="submit", name="save", class="btn btn-success">Submit</button>
 		</div>
 		{{form.name}}

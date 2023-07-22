@@ -5,7 +5,8 @@ from django.db import models
 
 class KanaCheck(models.Model):
 	text = models.CharField(max_length=10)
-	img = models.IntegerField()
+	hir = models.CharField(max_length=10, default='null')
 
 	def __str__(self):
-		return self.text
+		output = self.text + ' ' + self.hir
+		return output
