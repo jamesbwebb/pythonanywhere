@@ -1,29 +1,21 @@
 {% extends "main/base.html" %}
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
+
 {% block title %} Learn Kana {% endblock %}
 
 {% block content %}
-<h1>Learn Kana!</h1>
-<!-- load kana here -->
-<!-- This will have to be a randomized variable later -->
+<h1>Learn Hiragana!</h1>
 <h3>{{kana}}</h3>
 <h3>{{answer}}</h3>
+ 
 <button type="submit", name="randomize", class="btn btn-success"><a href=".">Skip</a></button><br><br>
-<!-- <h3>&#12354;</h3>
-	{% for k in lk %}
-		<p>{{k.text}}</p>
-		<br>
-		<p>{{k.hir}} </p>
-	{% endfor %}
- the "action" is what happens on click  -->
-<form method="post" action="#" class="form-group">
+<!-- the "action" is what happens on click  -->
+<form method="post" class="form-group">
 	{% csrf_token %}
 	<div class="input-group mb-3">
 		<div class="input-group-prepend">
-			<input type="text", name="new">
-			<button type="submit", name="save", class="btn btn-success">Submit</button>
+			<button type="submit", name="save", class="btn btn-success">Guess</button>
 		</div>
-		{{form.name}}
+		{{form.guess}}
 	</div>
 </form>
 {% endblock %}

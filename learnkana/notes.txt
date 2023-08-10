@@ -26,5 +26,9 @@ Create a database entry for the correct answers.
 
 Extras: Add a next or skip button.
 
-
-Google linguistics api?
+Update:
+database filled with entries of hiragana and english character answers.
+These load randomly to the webpage
+A skip button reloads the page and thusly randomizes the character.
+Decided to go with text integration for the characters instead of images.
+Currently working on the textbox/submit button/ correct answer validation.

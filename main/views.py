@@ -35,21 +35,23 @@ def home(response):
 	return render(response, "main/home.html", {})
 
 def create(response):
-	if response.method == "POST":
-		form = CreateNewList(response.POST)
-		if form.is_valid():
-			n = form.cleaned_data["name"]
-			t = ToDoList(name=n)
-			t.save()
-			response.user.todolist.add(t)
-		return HttpResponseRedirect("/view/")
-#		return HttpResponseRedirect("/main/%i" %t.id)
-	else:
-		form = CreateNewList()
+# implemented try/except clause to respond to Attribute Error caused by no user being logged in.
+	try:
+		if response.method == "POST":
+			form = CreateNewList(response.POST)
+			if form.is_valid():
+				n = form.cleaned_data["name"]
+				t = ToDoList(name=n)
+				t.save()
+				response.user.todolist.add(t)
+			return HttpResponseRedirect("/view/")
+		else:
+			form = CreateNewList()
 
 
-	return render(response, "main/create.html", {"form":form})
-
+		return render(response, "main/create.html", {"form":form})
+	except AttributeError:
+		return HttpResponseRedirect("/login/")
 def view(response):
 
 	return render(response, "main/view.html", {})

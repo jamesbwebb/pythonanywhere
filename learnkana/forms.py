@@ -1,5 +1,5 @@
 from django import forms
 
 class KanaChecker(forms.Form):
-	entry=forms.CharField(label='entry', max_length=10)
-	img=forms.IntegerField()
+#	answer=forms.CharField(label='answer', max_length=10)
+	guess=forms.CharField(label="guess", max_length=10)
