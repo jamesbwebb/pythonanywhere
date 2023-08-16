@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, reverse_lazy
 from . import views
 #from django.views.generic import TemplateView
 # https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -6,20 +6,11 @@ app_name = 'ads'
 
 urlpatterns = [
 
-path("", views.index, name="index"),
-path("create/", views.create, name="create"),
+	path('', views.AdListView.as_view(), name='all'),
+	path('ad/<int:pk>', views.AdDetailView.as_view(), name='ad_detail'),
+	path('ad/create/', views.AdCreateView.as_view(success_url=reverse_lazy('ads:all')), name='ad_create'),
+	path('ad/<int:pk>/update', views.AdUpdateView.as_view(success_url=reverse_lazy('ads:all')), name='ad_update'),
+	path('ad/<int:pk>/delete', views.AdDeleteView.as_view(success_url=reverse_lazy('ads:all')), name='ad_delete'),
 
 ]
 
-
-#app_name = 'autos'
-#urlpatterns = [
-#    path('', views.MainView.as_view(), name='all'),
-#    path('main/create/', views.AutoCreate.as_view(), name='auto_create'),
-#    path('main/<int:pk>/update/', views.AutoUpdate.as_view(), name='auto_update'),
-#    path('main/<int:pk>/delete/', views.AutoDelete.as_view(), name='auto_delete'),
-#    path('lookup/', views.MakeView.as_view(), name='make_list'),
-#    path('lookup/create/', views.MakeCreate.as_view(), name='make_create'),
-#    path('lookup/<int:pk>/update/', views.MakeUpdate.as_view(), name='make_update'),
-#    path('lookup/<int:pk>/delete/', views.MakeDelete.as_view(), name='make_delete'),
-#]
