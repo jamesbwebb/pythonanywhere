@@ -1,0 +1,21 @@
+{% extends "base_menu.html" %}
+
+{% block title %} Learn Kana {% endblock %}
+
+{% block content %}
+<h1>Learn Hiragana!</h1>
+<h3>{{kana}}</h3>
+<h3>{{answer}}</h3>
+ 
+<button type="submit", name="randomize", class="btn btn-success"><a href=".">Skip</a></button><br><br>
+<!-- the "action" is what happens on click  -->
+<form method="post" class="form-group">
+	{% csrf_token %}
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<button type="submit", name="save", class="btn btn-success">Guess</button>
+		</div>
+		{{form.guess}}
+	</div>
+</form>
+{% endblock %}

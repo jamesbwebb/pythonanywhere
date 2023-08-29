@@ -1,4 +1,4 @@
-{% extends "base_bootstrap.html" %}
+{% extends "base_menu.html" %}
 
 {% block content %}
 
@@ -10,8 +10,7 @@
   {% if user.is_authenticated %}
     <p>Your account doesn't have access to this page. To proceed,
     please login with an account that has access.</p>
-  {% else %}
-    <p>Please login to see this site.</p>
+
   {% endif %}
 {% endif %}
 
@@ -20,6 +19,7 @@
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 {{ form|crispy }}
+<p>Don't have an account? Create one <a href="/register">here.</a></p>
 <input type="submit" class="btn btn-primary" value="Login Locally" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>

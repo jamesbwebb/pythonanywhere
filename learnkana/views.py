@@ -3,10 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import KanaCheck
 from .forms import KanaChecker
 import random
+from ads.owner import OwnerListView
 
 # Create your views here.
+class Learn(OwnerListView):
+	model = KanaCheck
+	template_name = "learnkana/learn.html"
 
-def learn(response):
+def learnHiragana(response):
 	passthrough = {}
 	lk = KanaCheck.objects.all()
 	kana = random.choice(lk)

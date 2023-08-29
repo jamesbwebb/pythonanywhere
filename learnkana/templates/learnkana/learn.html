@@ -1,14 +1,23 @@
-{% extends "main/base.html" %}
+{% extends "base_menu.html" %}
 
 {% block title %} Learn Kana {% endblock %}
 
 {% block content %}
-<h1>Learn Hiragana!</h1>
+<h1>Learn Japanese!</h1><br>
+<h2>This will be changed to a generic learn page<br><br>
+The intent is to have multiple sets of characters that are loaded from this page.</h2>
+Hiragana, Katakana, maybe Kanji?<br>Other ideas include adding something like Korean.
+(I think this can be done with the same base code)<br><br>Though I might be moving 
+the entire application to Javascript.
+
+
+<!-- These tags will be temporarily disabled as the form that called them is in the
+process of being moved/rewritten.
 <h3>{{kana}}</h3>
 <h3>{{answer}}</h3>
  
 <button type="submit", name="randomize", class="btn btn-success"><a href=".">Skip</a></button><br><br>
-<!-- the "action" is what happens on click  -->
+<!-- the "action" is what happens on click  --><!--
 <form method="post" class="form-group">
 	{% csrf_token %}
 	<div class="input-group mb-3">
@@ -17,5 +26,5 @@
 		</div>
 		{{form.guess}}
 	</div>
-</form>
+</form> -->
 {% endblock %}

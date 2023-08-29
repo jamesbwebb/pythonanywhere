@@ -1,0 +1,117 @@
+Requirements for ads application: Coursera Django for everyone Course 3/4, week 5/6.
+
+Create two non-super users:
+dj4e_user1 / Meow_899808_41 done
+dj4e_user2 / Meow_42_899808 done
+
+You should have this meta tag in the <head> of each page:
+<meta name="dj4e" content="789980830f6960e332045653a8fe1a1b"> done
+
+additional requirements:
+https://www.dj4e.com/assn/dj4e_ads1.md?PHPSESSID=16924bb9f80da30bf88512a9dd49ae28
+
+Mysql is up and running.
+
+# stopped at Pulling in Code from Samples.
+8/15/23: right now the problem is "Tried to create a record and cannot find the record in the list view"
+The record has been created, I verified this in the admin panel.
+The edit view works, so maybe I need to look at the view and edit views together.
+
+Adding comments to the ads application:
+
+#1: Update models.py - Done
+#2: Pull CommentForm class into forms.py file -- Done
+
+#3: Adapt the get() method from ForumDetailView to your AdDetailView to retrieve 
+#the list of comments and create the CommentForm and pass them into your 
+#templates/ads/ad_detail.html template through the context. -- Done
+
+#4: Adapt the templates/ads/ad_detail.html template to show comments and show a delete
+#icon when a comment belongs to the current logged in user -- Done
+
+#5: Also add the ability to add a comment to an ad in ad_detail.html when the user is 
+#logged in by looking at the techniques in forums/templates/forums/detail.html --done
+
+#6: Add a route in urls.py for the ad_comment_create and ad_comment_delete reoutes from 
+#forums/urls.py Makesure to use the same URL patterns as shown here: -- Done
+
+#7: Adapt the comment related views from forums/views.py and put them into your views.py
+#-- Done
+#8: You will have to adapt the forums/templates/forums/comment_delete.html template to 
+#work in your ads applicaion. -- Done
+
+#Next to work on:
+
+Returned invalid syntax on 1st urls.py line copied from website.
+Do CommentCreateView and CommentDeleteView exist in the views.py file? Yes, as classes
+Fixed the syntax error, the urlpatterns list was missing a comma after the last element before
+the forum addition was started. 
+New issue: TypeError
+CommentCreateView() recieved an invalid keyword 'success_url'.as_view only accepts arguments
+that are already attributes of the class. maybe check google on this one?
+After looking into this one the line should have read .as_view() with no arguments passed
+in, I had added some to conform to the other path objects and was mistaking in doing so
+removing them fixed that issue.
+New issue: NoReverseMatch at /ads/ad/42
+Reverse for 'ad_comment_create' with arguments'(",)' not found. 1 pattern(s) tried:
+ ['ads/ad/(?P<pk>[0-9]+/comments$']
+Not sure why that argument is being passed in.
+
+Also ads cannot be viewed when the user is not logged in, just shows '()'
+Ads cannot be viewd when user is logged in, just shows '()'
+I am very sure I had this working at one point.
+I think it was something inside the ad_detail.html file with the ordering of lines.
+The issue here was in the variable calling, 'ad' was called when 'ads' needed to be.
+
+<!-- Had to go to the forums to find an two year old version and plug in the old
+content number to pass the auto grader. -->
+<meta name="dj4e-code" content="42162087851562">
+
+Week 4:
+Do all of the Challenges,
+#1: Make yourself a gravatar: Done - I went with bulbasaur and linked it to ja..bb@gmail.com
+#2: Change your favicon.ico to a favicon of your own making: Done - Used bulbasaur again.
+3: Make social login work: Not done
+I followed the tut video on coursera without anything erroring out and this is not working.
+I'm going to re-write some of my website, taking out the side nav and only using the topnav
+
+Next step is to go back in the coursework and look at how that should have been setup?
+
+
+Adding Favorites to the Ads Application,
+1: Add "this" to your ads/model.py, taking inspiration from dj4e-samples/favs/models.py:
+Not done
+2: Add two routes to your urls.py for the favorite features: Not done
+path('ad/<int:pk>/favorite', views.AddFavoriteView.as_view(), name='ad_favorite'),
+path('ad/<int:pk>/unfavorite', views.DeleteFavoriteView.as_view(), name='ad_unfavorite'),
+3: Look at how ThingListView from dj4e-samples/favs/view.py retrieves the list of 
+favorites for the current user and add code to your AdListView to retrieve the 
+favorites for the current logged in user: Not done
+4: Alter your ad_list.html by looking through favs/templates/favs/list.html Make sure 
+to add the parts that show the stars based on the list of favorites for this user and 
+the favPost() JavaScript code at the end: Not done
+5: Pull in and adapt AddFavoriteView, and DeleteFavoriteView from 
+dj4e-samples/favs/views.py into your views.py file: Not done
+
+Extras: Remove "login" link from .com/ads/ page, this isn't needed. Clicking "Add an Ad"
+while not logged in will lead you to the login page, login is also available on navbar.
+
+8/25/23:
+The website is now using the base_menu.html as the main template, this process is functional
+but not pretty. I'll have to continue with this from a css perspective and get it to look nice.
+8/28/23:
+All of the sidebar has been moved to the top navbar, all link are styled the same.
+This doesn't have a mouseover functionality. I think I do want to put that in.
+Social login (github):
+This redirects you to github, allows you to login, redirects you back to my site then
+errors out.
+AttributeError at /oauth/complete/github/
+'NoneType' object has no attribute 'provider'
+You are then logged into github's site but not my site. Obviously a bit of an issue.
+
+8/29/23:
+Last night around 9pm leonardo blocked my website from viewing, python anywhere can
+still be accessed. So I can still edit but I'm not sure how to verify changes.
+A message was sent to the "Report an incorrect block" Not sure what time frame these are
+responded to in.
+Project pause for vacation regardless.

@@ -1,9 +1,18 @@
-{% extends 'main/base.html' %}
-
+{% extends "base_menu.html" %}
+<h1>Curernt request.path {{ request.path }}</h1>
 {% block title %}
 Home
 {% endblock %}
 
 {% block content %}
 <h1>Home page</h1>
+{% if user.is_authenticated %}
+<p>Authenticated as
+<pre>
+Name: {{ user.get_full_name }}
+Email: {{ user.email }}
+Id: {{ user.id }}
+</pre>
+</p>
+{% endif %}
 {% endblock %}
