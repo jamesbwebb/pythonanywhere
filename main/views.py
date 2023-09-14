@@ -51,7 +51,7 @@ def create(response):
 
 		return render(response, "main/create.html", {"form":form})
 	except AttributeError:
-		return HttpResponseRedirect("/login/")
+		return HttpResponseRedirect("/accounts/login/")
 def view(response):
 
 	return render(response, "main/view.html", {})

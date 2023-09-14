@@ -71,14 +71,14 @@ Week 4:
 Do all of the Challenges,
 #1: Make yourself a gravatar: Done - I went with bulbasaur and linked it to ja..bb@gmail.com
 #2: Change your favicon.ico to a favicon of your own making: Done - Used bulbasaur again.
-3: Make social login work: Not done
+3: Make social login work: In progress.
 I followed the tut video on coursera without anything erroring out and this is not working.
-I'm going to re-write some of my website, taking out the side nav and only using the topnav
+# I'm going to re-write some of my website, taking out the side nav and only using the topnav. Done
 
 Next step is to go back in the coursework and look at how that should have been setup?
+Watch the video provided through coursera again and go to the internet if additional instructions are needed.
 
-
-Adding Favorites to the Ads Application,
+Adding Favorites to the Ads Application, - On Hold pending completion of social login.
 1: Add "this" to your ads/model.py, taking inspiration from dj4e-samples/favs/models.py:
 Not done
 2: Add two routes to your urls.py for the favorite features: Not done
@@ -93,25 +93,38 @@ the favPost() JavaScript code at the end: Not done
 5: Pull in and adapt AddFavoriteView, and DeleteFavoriteView from 
 dj4e-samples/favs/views.py into your views.py file: Not done
 
-Extras: Remove "login" link from .com/ads/ page, this isn't needed. Clicking "Add an Ad"
-while not logged in will lead you to the login page, login is also available on navbar.
+# Extras: Remove "login" link from .com/ads/ page, this isn't needed. Clicking "Add an Ad"
+# while not logged in will lead you to the login page, login is also available on navbar.
+# Done - login is now only available through navbar. Sidebar has been removed.
 
-8/25/23:
-The website is now using the base_menu.html as the main template, this process is functional
-but not pretty. I'll have to continue with this from a css perspective and get it to look nice.
+# 8/25/23:
+# The website is now using the base_menu.html as the main template, this process is functional
+# but not pretty. I'll have to continue with this from a css perspective and get it to look nice.
+# Done - I went through and worked on the CSS, it now looks "nice".
+
 8/28/23:
-All of the sidebar has been moved to the top navbar, all link are styled the same.
-This doesn't have a mouseover functionality. I think I do want to put that in.
+# All of the sidebar has been moved to the top navbar, all link are styled the same.
+Add mouseover functionality to navbar links.
+
 Social login (github):
 This redirects you to github, allows you to login, redirects you back to my site then
 errors out.
 AttributeError at /oauth/complete/github/
 'NoneType' object has no attribute 'provider'
-You are then logged into github's site but not my site. Obviously a bit of an issue.
+You are then logged into github's site but not my site.
 
-8/29/23:
-Last night around 9pm leonardo blocked my website from viewing, python anywhere can
-still be accessed. So I can still edit but I'm not sure how to verify changes.
-A message was sent to the "Report an incorrect block" Not sure what time frame these are
-responded to in.
-Project pause for vacation regardless.
+# 8/28/23:
+# ~9pm leonardo blocked my website from viewing, python anywhere can still be accessed. 
+# So I can still edit but I'm not sure how to verify changes. A message was sent to the 
+# "Report an incorrect block" Not sure what time frame these are responded to in.
+# Project pause for vacation regardless.
+# Fixed - This site in no longer blocked.
+
+9/12/23:
+Time to troubleshoot the social authentication.
+I ran the autograder which flagged a nogo for a lack of favorites.
+Started integrating the favorites feature into the website, all the code is in
+place, python manage.py check passes but the buttons are not showing up. Still
+troubleshooting.
+
+Check the css.

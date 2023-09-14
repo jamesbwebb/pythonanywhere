@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'social_django',
+#    'social_django_mongoengine', # This wasn't mentioned in the coursera tut
     'taggit',
     'home.apps.HomeConfig',
 
@@ -176,6 +177,10 @@ AUTHENTICATION_BACKENDS = (
     # 'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+# Not super sure where this line should be but it's throwing errors.
+#SOCIAL_AUTH_STORAGE = 'social_django_mongoengine.models.DjangoStorage' # Added for monoengine
+# storage
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'

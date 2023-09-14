@@ -2,6 +2,9 @@
 {% block content %}
 <h1>Ads</h1>
 
+
+<i class="fa fa-star-o" aria-hidden="true"></i>
+
 <p>
 {% if ad_list %}
 <ul>
@@ -12,6 +15,37 @@
         <button type="button" class="ed"><a href="{% url 'ads:ad_update' Ad.id %}">Edit</a></button>
 	<button type="button" class="ed"><a href="{% url 'ads:ad_delete' Ad.id %}">Delete</a></button>
         {% endif %}
+        {% if user.is_authenticated %}
+	<!--Two hrefs with two stacked icons each - one showing and one hidden -->
+	{{ Ad.id }}
+	{{ Ad.favorites }}
+	 <a href="#" onclick=
+<!-- ads:thing_unfavorite Verify 'thing' I don't think that's right. This is a reference to the urls.py file -->
+            "favPost('{% url 'ads:ad_unfavorite' Ad.id %}', {{ Ad.id }} );return false;"
+            {% if Ad.id not in favorites %} style="display: none;" {% endif %}
+            id="favorite_star_{{Ad.id}}">
+        <span class="fa-stack" style="vertical-align: middle;">
+        <i class="fa fa-star fa-stack-1x" style="color: orange;"></i>
+        <i class="fa fa-star-o fa-stack-1x"></i>
+        </span>
+        </a>
+        <!-- the second href -->
+        <a href="#" onclick=
+             "favPost('{% url 'ads:ad_favorite' Ad.id %}', {{ Ad.id }} );return false;"
+            {% if Ad.id in favorites %} style="display: none;" {% endif %}
+            id="unfavorite_star_{{Ad.id}}">
+
+
+
+        <span class="fa-stack" style="vertical-align: middle;">
+        <i class="fa fa-star fa-stack-1x" style="display: none; color: orange;"></i>
+        <i class="fa fa-star-o fa-stack-1x"></i>
+        </span>
+        </a>
+
+
+
+	{% endif %}
     </li>
   {% endfor %}
 </ul>
@@ -27,4 +61,34 @@
 <button type="button" class="log"><a href="{% url 'login' %}?next={% url 'ads:all' %}">Login</a></button>
 {% endif %}
 </p>
+<script>
+function toggleInlineDisplay(star_id) {
+    var elem = document.getElementById(star_id);
+    if(window.getComputedStyle(elem).display == "inline") {
+        elem.style.display = 'none';
+        elem.dataset.previousDisplay = 'inline';
+    } else if(window.getComputedStyle(elem).display == "block") {
+        elem.style.display = 'none';
+        elem.dataset.previousDisplay = 'block';
+    } else {
+        console.log('prev', elem.dataset.previousDisplay);
+        if ( typeof elem.dataset.previousDisplay == 'string' ) {
+            elem.style.display = elem.dataset.previousDisplay
+        } else {
+            elem.style.display = 'inline';
+        }
+    }
+}
+function favPost(url, thing_id) {
+    console.log('POSTing to', url);
+    fetch(url, { method: 'POST', body: '{}' } )
+    .then((response) => {
+        console.log(url, 'finished');
+        toggleInlineDisplay("unfavorite_star_"+ad_id);
+        toggleInlineDisplay("favorite_star_"+ad_id);
+    }).catch((error) => {
+        alert('Url failed with '+error+' '+url);
+    });
+}
+</script>
 {% endblock %}

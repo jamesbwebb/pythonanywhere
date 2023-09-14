@@ -98,3 +98,33 @@ class CommentDeleteView(OwnerDeleteView):
         forum = self.object.forum
 # so solf.objects.forum.id from the models file, passed to 
         return reverse('ads:ad_detail', args=[forum.id])
+
+# csrf exemption in class based views
+# https://stackoverflow.com/questions/16458166/how-to-disable-djangos-csrf-validation
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.db.utils import IntegrityError
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class AddFavoriteView(LoginRequiredMixin, View):
+	def post(self, request, pk) :
+		print("Add PK",pk)
+		t = get_object_or_404(Thing, id=pk)
+		fav = Fav(user=request.user, thing=t)
+		try:
+			fav.save()  # In case of duplicate key
+		except IntegrityError as e:
+			pass
+		return HttpResponse()
+@method_decorator(csrf_exempt, name='dispatch')
+class DeleteFavoriteView(LoginRequiredMixin, View):
+	def post(self, request, pk) :
+		print("Delete PK",pk)
+		t = get_object_or_404(Thing, id=pk)
+		try:
+			fav = Fav.objects.get(user=request.user, thing=t).delete()
+		except Fav.DoesNotExist as e:
+			pass
+		return HttpResponse()
+
