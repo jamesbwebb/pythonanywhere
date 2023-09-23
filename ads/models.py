@@ -11,7 +11,9 @@ class Ad(models.Model) :
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
     text = models.TextField()
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='fav_thing_owner')
-    favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Fav', related_name='favorite_things')
+# changed related_name='favorite_thing' to 'favorite_ads'
+    favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Fav', related_name='favorite_ads')
+
     picture = models.BinaryField(null=True, editable=True)
     content_type = models.CharField(max_length=256, null=True, help_text='The MIMEType of the file')
     comments = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Comment', related_name='ad_comments')
@@ -37,11 +39,10 @@ class Comment(models.Model):
         return self.text[:12] + ' ...'
 
 class Fav(models.Model):
-    thing = models.ForeignKey(Ad, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-        related_name='favs_users')
+    ad = models.ForeignKey(Ad, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # https://docs.djangoproject.com/en/4.2/ref/models/options/#unique-together
     class Meta:
-        unique_together = ('thing', 'user')
-    def __str__(self) :
-        return '%s likes %s'%(self.user.username, self.thing.title[:10])
+        unique_together = ('ad', 'user')
+    def __str__(self):
+        return '%s likes %s'%(self.user.username, self.ad.title[:10])

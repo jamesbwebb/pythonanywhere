@@ -1,4 +1,4 @@
-from ads.models import Ad, Comment
+from ads.models import Ad, Comment, Fav
 from django.views import View, generic
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -10,6 +10,16 @@ from ads.forms import CreateForm, CommentForm
 class AdListView(OwnerListView):
 	model = Ad
 	template_name = "ads/ad_list.html"
+
+	def get(self, request):
+		ad_list = Ad.objects.all()
+		favorites = list()
+		if request.user.is_authenticated:
+			rows = request.user.favorite_ads.values('id')
+			favorites = [ row['id'] for row in rows ]
+		ctx = {'ad_list' : ad_list, 'favorites': favorites}
+		return render(request, self.template_name, ctx)
+
 
 class AdDetailView(OwnerDetailView):
 	model = Ad
@@ -109,22 +119,27 @@ from django.db.utils import IntegrityError
 @method_decorator(csrf_exempt, name='dispatch')
 class AddFavoriteView(LoginRequiredMixin, View):
 	def post(self, request, pk) :
-		print("Add PK",pk)
-		t = get_object_or_404(Thing, id=pk)
-		fav = Fav(user=request.user, thing=t)
+		print("Add PK", pk)
+		a = get_object_or_404(Ad, id=pk)
+		fav = Fav(user=request.user, ad=a)
 		try:
 			fav.save()  # In case of duplicate key
 		except IntegrityError as e:
 			pass
 		return HttpResponse()
+
 @method_decorator(csrf_exempt, name='dispatch')
 class DeleteFavoriteView(LoginRequiredMixin, View):
 	def post(self, request, pk) :
 		print("Delete PK",pk)
-		t = get_object_or_404(Thing, id=pk)
+		a = get_object_or_404(Ad, id=pk)
 		try:
-			fav = Fav.objects.get(user=request.user, thing=t).delete()
+			fav = Fav.objects.get(user=request.user, ad=a).delete()
 		except Fav.DoesNotExist as e:
 			pass
 		return HttpResponse()
 
+
+
+def TestView(response):
+	return render(response, 'test.html', {})

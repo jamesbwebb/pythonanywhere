@@ -182,8 +182,11 @@ AUTHENTICATION_BACKENDS = (
 #SOCIAL_AUTH_STORAGE = 'social_django_mongoengine.models.DjangoStorage' # Added for monoengine
 # storage
 
+
+LOGIN_URL = 'accounts/login/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'accounts/login/'
 
 # Don't set default LOGIN_URL - let django.contrib.auth set it when it is loaded
 # LOGIN_URL = '/accounts/login'

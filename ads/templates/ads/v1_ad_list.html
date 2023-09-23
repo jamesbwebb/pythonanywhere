@@ -13,6 +13,9 @@
         {% endif %}
         {% if user.is_authenticated %}
 	<!--Two hrefs with two stacked icons each - one showing and one hidden -->
+
+
+	
 <!-- 'ads:ad_unfavorite' This is a reference to the name="" section of the urls.py file -->
 	 <a href="#" onclick="favPost('{% url 'ads:ad_unfavorite' Ad.id %}', {{ Ad.id }}); return false;"
             {% if Ad.id not in favorites %} style="display: none;" {% endif %}
@@ -22,6 +25,20 @@
         <i class="fa fa-star-o fa-stack-1x"></i>
         </span>
         </a>
+
+<!--	<div id="favorite-section"> because the <div> tag automatically ads a <br> we can't use it if we want the icon at
+the end of our line.
+		<span id="test">test</span>
+		{% if Ad.id not in favorites %}
+		<a href="#" onclick="favPost('{% url 'ads:ad_favorite' Ad.id %}', {{ Ad.id }}); return false;" style="vertical-align: middle;">
+			<i class="far fa-heart"></i>
+		</a>
+		{% else %}
+		<a href="#" onclick="{% url 'ads:ad_unfavorite' Ad.id %}"; return false; style="vertical-align:middle;">
+                        <i class="fas fa-heart" style="color: orange;"></i>
+                </a>
+		{% endif %}
+<!-- 	</div> --
         <!-- the second href -->
         <a href="#" onclick="favPost('{% url 'ads:ad_favorite' Ad.id %}', {{ Ad.id }} );return false;"
             {% if Ad.id in favorites %} style="display: none;" {% endif %}
@@ -31,6 +48,9 @@
         <i class="fa fa-star-o fa-stack-1x"></i>
         </span>
         </a>
+
+
+
 	{% endif %}
     </li>
   {% endfor %}
@@ -48,6 +68,19 @@
 {% endif %}
 </p>
 <script type="text/javascript">
+
+<!--
+console.dir(document.getElementById('test'));
+st = document.getElementById('test').innerHTML;
+console.log("Span tag = "+st);
+-->
+<!--
+function favPost(url, Ad_id) {
+    console.log(url);
+    console.log(Ad_id);
+}
+-->
+<!--
 function toggleInlineDisplay(star_id) {
     var elem = document.getElementById(star_id);
     if(window.getComputedStyle(elem).display == "inline") {
@@ -76,5 +109,6 @@ function favPost(url, Ad_id) {
         alert('Url failed with '+error+' '+url);
     });
 }
+-->
 </script>
 {% endblock %}

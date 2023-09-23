@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
 from django.contrib.auth import views as auth_views
+# from django.conf.urls import url trying to fix social login
 from django.views.static import serve
 from django.views.generic import TemplateView
 from register import views as v
@@ -36,7 +37,8 @@ urlpatterns = [
 #    path('signup/', v.register, name="register"), # Redirect
 #    path('main/', include('main.urls')),
 #    path('view/', v.view, name="view"),
-#    url(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
+# line below trying to fix social login.
+#    url(r'^oauth/', include('social_django.urls', namespace='social')),  # 
 
 ]
 
