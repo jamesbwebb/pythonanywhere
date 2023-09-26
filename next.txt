@@ -188,9 +188,38 @@ I have this setup but also not working correctly yet, this uses a heart icon and
 the correct, filled/unfilled, value based on the database entry. Clicking the icon
 405 errors so I'll have to look into that, also this icon won't update the database.
 
-So the star icon enters into the database correctly but vizualizes funny. The hearts
-vizualize correctly but don't interface with the backend correctly. this is kind of
-funny to me.
+So the star icon enters into the database correctly but vizualizes funny. The
+hearts vizualize correctly but don't interface with the backend correctly.
+This is kind of funny to me.
 
-9/22/23
+9/22/23:
 And like magic I've completed section 4 of the class.
+Started the final project, step one is to add a search bar. Html is complete,
+the search bar displays and everything. Well it doesn't do anything but it shows
+up on the webpage.
+
+I have 16 minutes, I wonder if I could write an about page.
+I thought it would be a better idea to put the about information right on the
+homepage becuase the primary purpose of this site is my education I thought it
+would be fitting.
+
+Fixed logout button not showing by removing it from the dropdown.
+Changed the styling on the ads buttons to not include the underline.
+
+9/25/23:
+Final project continued
+
+URL for evaluation: https:\\jameswebb.pythonanywhere.com/ads
+
+# This is the same from week 4's project so I shouldn't have to change anythihng.
+# dj4e_user1 / Meow_5f3698_41
+# dj4e_user2 / Meow_42_5f3698
+# <meta name="dj4e" content="85f36986fcf19e99df36ca4800f95e06">
+
+Add search feature, goal is to search ad.title and ad.text for the search value
+and return an ad_list page populated with the resulting value.
+Consult dj4e-samples/well and the coursera video tutorial for how to.
+I'm thinking I should rewatch the tut and take notes.
+
+Add Support for Tags: I think I'll get the search functionality operational then
+dive into the tags feature.

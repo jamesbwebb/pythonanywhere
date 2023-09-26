@@ -1,23 +1,33 @@
 from ads.models import Ad, Comment, Fav
-from django.views import View, generic
+from django.views import View # generic # not used
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from ads.owner import OwnerListView, OwnerDetailView, OwnerCreateView, OwnerUpdateView, OwnerDeleteView
+from django.contrib.humanize.templatetags.humanize import naturaltime
+from ads.owner import OwnerListView, OwnerDetailView, OwnerDeleteView # OwnerCreateView, OwnerUpdateView #not used
 from ads.forms import CreateForm, CommentForm
+from django.db.models import Q
 
 class AdListView(OwnerListView):
 	model = Ad
 	template_name = "ads/ad_list.html"
 
 	def get(self, request):
-		ad_list = Ad.objects.all()
+		strval = request.GET.get("search", False)
 		favorites = list()
-		if request.user.is_authenticated:
-			rows = request.user.favorite_ads.values('id')
-			favorites = [ row['id'] for row in rows ]
-		ctx = {'ad_list' : ad_list, 'favorites': favorites}
+		if strval:
+			query = Q(title__icontains=strval)
+			query.add(Q(text__icontains=strval), Q.OR)
+			ad_list = Ad.objects.filter(query).select_related().order_by('-updated_at')[:10]
+		else:
+			ad_list = Ad.objects.all().order_by('-updated_at')[:10]
+			if request.user.is_authenticated:
+				rows = request.user.favorite_ads.values('id')
+				favorites = [ row['id'] for row in rows ]
+			for obj in ad_list:
+				obj.natural_updated = naturaltime(obj.updated_at)
+		ctx = {'ad_list' : ad_list, 'favorites': favorites, 'search': strval}
 		return render(request, self.template_name, ctx)
 
 
@@ -106,7 +116,7 @@ class CommentDeleteView(OwnerDeleteView):
     # https://stackoverflow.com/questions/26290415/deleteview-with-a-dynamic-success-url-dependent-on-id
     def get_success_url(self):
         forum = self.object.forum
-# so solf.objects.forum.id from the models file, passed to 
+# so solf.objects.forum.id from the models file, passed to
         return reverse('ads:ad_detail', args=[forum.id])
 
 # csrf exemption in class based views
@@ -124,7 +134,7 @@ class AddFavoriteView(LoginRequiredMixin, View):
 		fav = Fav(user=request.user, ad=a)
 		try:
 			fav.save()  # In case of duplicate key
-		except IntegrityError as e:
+		except IntegrityError:
 			pass
 		return HttpResponse()
 
@@ -134,8 +144,8 @@ class DeleteFavoriteView(LoginRequiredMixin, View):
 		print("Delete PK",pk)
 		a = get_object_or_404(Ad, id=pk)
 		try:
-			fav = Fav.objects.get(user=request.user, ad=a).delete()
-		except Fav.DoesNotExist as e:
+			Fav.objects.get(user=request.user, ad=a).delete()
+		except Fav.DoesNotExist:
 			pass
 		return HttpResponse()
 

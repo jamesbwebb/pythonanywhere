@@ -5,14 +5,28 @@ Home
 {% endblock %}
 
 {% block content %}
-<h1>Home page</h1>
-{% if user.is_authenticated %}
-<p>Authenticated as
-<pre>
-Name: {{ user.get_full_name }}
-Email: {{ user.email }}
-Id: {{ user.id }}
-</pre>
+<div id="welcome">
+<h1>Welcome!</h1>
+<p>
+This site is currently in development. The current project is to add a search
+feature to the ads application. Html has been finished but that's it for now.
 </p>
-{% endif %}
+<strong>Finished projects include</strong>
+    <li>Favorites</li>
+    <li>Edit/Delete locked behind Owner</li>
+    <li>Ads C.R.U.D functionality</li>
+    <li>Login/logout</li>
+    <li>Navbar</li>
+</div><br>
+<div id="user-data">
+    {% if user.is_authenticated %}
+    <p>Authenticated as:
+    <pre>
+    Name: {{ user.get_full_name }}
+    Email: {{ user.email }}
+    Id: {{ user.id }}
+    </pre>
+    </p>
+    {% endif %}
+</div>
 {% endblock %}

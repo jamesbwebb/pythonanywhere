@@ -2,6 +2,13 @@
 {% block content %}
 <h1>Ads</h1>
 <p>
+<div style="float:right">
+	<form>
+	<input type="text" placeholder="Search.." name="search"{% if search %} value="{{ search}}" {% endif %}>
+	<button type="submit"><i class="fa fa-search"></i></button>
+	<a href="{% url 'ads:all' %}"><i class="fa fa-undo"></i></a>
+	</form>
+</div>
 {% if ad_list %}
 <ul>
   {% for Ad in ad_list %}
