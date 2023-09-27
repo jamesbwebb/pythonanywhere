@@ -221,5 +221,35 @@ and return an ad_list page populated with the resulting value.
 Consult dj4e-samples/well and the coursera video tutorial for how to.
 I'm thinking I should rewatch the tut and take notes.
 
-Add Support for Tags: I think I'll get the search functionality operational then
-dive into the tags feature.
+Search for things, reloading the page with only searched parameters.
+Use a get parameter, we should be able to bookmark a search and get the same search
+but not necessarily the same page. Example url "well/?search=Yada"
+# Undo button links to "/well/" w/o parameter. Do this first, easy. Done
+For the example text Ads is called Post.
+urls.py list view will be changed, to incorporate the search functionality.
+append the listview with a get function,
+searhcVal = request.GET.get("search", False)
+if searchVal:
+<use search>
+else:
+<load page>
+
+Revert button goes back to the origional page.
+Search bar is up and running.
+
+Add Support for Tags:
+At ad creation we'll have to save tags, because this is a many to many model in
+the database we'll have to do the saving after the form has been copied to the
+model and has been saved. So like a 2nd save instead of being included in the
+first.
+For tag integration we need to add them to the creation form and allow them to
+be changed in the update section. Detail page needs to also show tags.
+Also I'll have to include them in the items to be searched.
+This means we need to add the tags to the database model and makemigrations in
+django
+
+models.py has been updated, migrations have been made.
+Still have to do everything else.
+
+
+Extra goals, registration page allowing users to edit/delete a profile.

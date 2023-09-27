@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.humanize.templatetags.humanize import naturaltime
-from ads.owner import OwnerListView, OwnerDetailView, OwnerDeleteView # OwnerCreateView, OwnerUpdateView #not used
+from ads.owner import OwnerListView, OwnerDetailView, OwnerDeleteView, OwnerCreateView, OwnerUpdateView
 from ads.forms import CreateForm, CommentForm
 from django.db.models import Q
 
@@ -19,6 +19,7 @@ class AdListView(OwnerListView):
 		if strval:
 			query = Q(title__icontains=strval)
 			query.add(Q(text__icontains=strval), Q.OR)
+			query.add(Q(tags__name__in=[strval]), Q.OR)  # Should include tags in search bar.
 			ad_list = Ad.objects.filter(query).select_related().order_by('-updated_at')[:10]
 		else:
 			ad_list = Ad.objects.all().order_by('-updated_at')[:10]
@@ -42,9 +43,10 @@ class AdDetailView(OwnerDetailView):
 		return render(request, self.template_name, context)
 
 
-class AdCreateView(LoginRequiredMixin, View):
+class AdCreateView(OwnerCreateView):
+	fields = ['title', 'text', 'tags']
 	template_name = "ads/ad_form.html"
-	success_url = reverse_lazy('adss:all')
+	success_url = reverse_lazy('ads:all')
 
 	def get(self, request, pk=None):
 		form = CreateForm()
@@ -59,13 +61,15 @@ class AdCreateView(LoginRequiredMixin, View):
 		pic = form.save(commit=False)
 		pic.owner = self.request.user
 		pic.save()
+		form.save_m2m() # should support tags
 		return redirect(self.success_url)
 
 #	model = Ad
 	# List the fields to copy from the Ad model to the Ad form
 #	fields = ['title', 'price', 'text']
 
-class AdUpdateView(LoginRequiredMixin, View):
+class AdUpdateView(OwnerUpdateView):
+	fields = ['title', 'text', 'tags']
 	template_name = 'ads/ad_form.html'
 	success_url = reverse_lazy('ads:all')
 
@@ -83,6 +87,7 @@ class AdUpdateView(LoginRequiredMixin, View):
 			return render(request, self.template_name, ctx)
 		pic = form.save(commit=False)
 		pic.save()
+		form.save_m2m() # should support tags
 		return redirect(self.success_url)
 
 

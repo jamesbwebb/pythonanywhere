@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
-from django.contrib.auth.models import User # I don't think this is used here.
 from django.conf import settings
+from taggit.managers import TaggableManager
 
 class Ad(models.Model) :
     title = models.CharField(
@@ -10,6 +10,7 @@ class Ad(models.Model) :
     )
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
     text = models.TextField()
+    tags = TaggableManager(blank=True)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='fav_thing_owner')
     favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Fav', related_name='favorite_ads')
     picture = models.BinaryField(null=True, editable=True)

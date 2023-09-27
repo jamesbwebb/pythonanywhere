@@ -38,6 +38,14 @@
 Price: {{ ads.price }}
 <br><br>
 {{ ads.text }}
+<br><br>
+{% if ads.tags.all %}
+<p>Tags:
+    {% for tag in ads.tags.all %}
+    <span style="border:1px grey solid; background-color: LightGreen;">{{ tag }}</span>
+    {% endfor %}
+</p>
+{% endif %}
 </p>
 <p>
 {% if user.is_authenticated %}
