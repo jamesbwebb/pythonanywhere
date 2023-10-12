@@ -3,14 +3,16 @@ from django.core.validators import MinLengthValidator
 from django.conf import settings
 from taggit.managers import TaggableManager
 
+# This is the database model for the ads application
 class Ad(models.Model) :
     title = models.CharField(
             max_length=200,
             validators=[MinLengthValidator(2, "Title must be greater than 2 characters")]
     )
-    price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
-    text = models.TextField()
-    tags = TaggableManager(blank=True)
+    price = models.DecimalField(max_digits=7, decimal_places=2, null=True) # This field no longer shows
+    text = models.TextField() # General description data
+    ptext = models.TextField(null=True) # <pre> wrapped at .html ideal for code print out
+    tags = TaggableManager(blank=True) # ease of searching.
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='fav_thing_owner')
     favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Fav', related_name='favorite_ads')
     picture = models.BinaryField(null=True, editable=True)

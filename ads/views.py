@@ -44,7 +44,7 @@ class AdDetailView(OwnerDetailView):
 
 
 class AdCreateView(OwnerCreateView):
-	fields = ['title', 'text', 'tags']
+	fields = ['title', 'text', 'ptext', 'tags']
 	template_name = "ads/ad_form.html"
 	success_url = reverse_lazy('ads:all')
 
@@ -69,7 +69,7 @@ class AdCreateView(OwnerCreateView):
 #	fields = ['title', 'price', 'text']
 
 class AdUpdateView(OwnerUpdateView):
-	fields = ['title', 'text', 'tags']
+	fields = ['title', 'text', 'ptext', 'tags']
 	template_name = 'ads/ad_form.html'
 	success_url = reverse_lazy('ads:all')
 

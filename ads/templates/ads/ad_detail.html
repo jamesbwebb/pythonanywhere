@@ -34,11 +34,12 @@
 {% if ads.content_type %}
 <img style="float:right; max-width:50%;" src="{% url 'ads:ad_picture' ads.id %}" onclick="document.getElementById('overlay').style.display = 'block';">
 {% endif %}
-<p>
-Price: {{ ads.price }}
-<br><br>
-{{ ads.text }}
-<br><br>
+<p><br>
+<!-- Price: {{ ads.price }}<br><br> This is no longer inside the project's scope. -->
+{{ ads.text }}<br><br>
+
+<pre>{{ ads.ptext }}</pre><br><br>
+
 {% if ads.tags.all %}
 <p>Tags:
     {% for tag in ads.tags.all %}

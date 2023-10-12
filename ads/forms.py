@@ -20,7 +20,7 @@ class CreateForm(forms.ModelForm):
     # Hint: this will need to be changed for use in the ads application :)
     class Meta:
         model = Ad
-        fields = ['title', 'text', 'price', 'tags', 'picture']  # Picture is manual
+        fields = ['title', 'text', 'ptext', 'price', 'tags', 'picture']  # Picture is manual
 
     # Validate the size of the picture
     def clean(self):
