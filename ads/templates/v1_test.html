@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+
+<!-- I need both of these for the star icon -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+
+
+</head>
+<body>
+
+<div class="dropdown">
+  <span>Mouse over me</span>
+  <div class="dropdown-content">
+    <p>Hello World!</p>
+  </div>
+</div>
+
+<h1>Test page</h1>
+<p>My first paragraph.</p>
+<br><br>
+
+<i class="fa fa-star-o" aria-hidden="true"></i>
+<i class="fa fa-camera-retro fa-lg"></i>
+
+</body>
+</html>

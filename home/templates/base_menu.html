@@ -17,7 +17,7 @@
       <li {% if request.get_full_path == main %} class="active"{% endif %}>
 	    <a class="navbar-brand" href="{% url 'main:view' %}">List View</a></li>
       <li{% if request.get_full_path == ad_create %} class="active"{% endif %}>
-        <a class="navbar-brand" href="{% url 'ads:ad_create' %}">Create Ad</a></li>\
+        <a class="navbar-brand" href="{% url 'ads:ad_create' %}">Create Ad</a></li>
       <li class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
 		<img style="width: 25px:" src="{{ user|gravatar:30 }}"/>

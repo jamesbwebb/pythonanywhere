@@ -253,3 +253,60 @@ Still have to do everything else.
 
 
 Extra goals, registration page allowing users to edit/delete a profile.
+
+Integrate Weather api
+allow user to toggle between C and F, save that change so it'll load up correctly next time
+The youtube tut I'm watching shows an api returning the temp data in kelvin, it is said that this is a standard, 
+so we'll need to write a function to convert to c/f, he uses one function that returns a tuple, this is a neat way to do it
+as you can use either output[0] or output[1] based of the user preference.
+Alternatly use this function to set a c and f variable then use one or the other based on user data.
+
+www.openweathermap.org for their api
+email used for account, xxkoorixx@gmail.com
+
+go to the website and create an account,
+get my api key from my api keys, under the account drop down
+Maybe go the secure route create a text file with the api key as the only thing in it,
+Then open that file in the python scrpit to ensure the key remains hidden.
+
+For this example we are going to
+import datetime as dt # Not sure if I'm using this yet
+import requests # requests must be installed pip install requests, as it is not part of the core python stack.
+open a python shell or write out a short script for testing
+
+BASE_URL = 'http://api.openweathermap.org/data/2.5/weather/?' # verify this on their website as it may have been updated.
+API_KEY = open('apikey.txt', 'r').read() #make sure to include an apikey file with the api key, we could skip this over for testing
+CITY = 'Boston' # This will have to be more complex later but for testing this if fine
+
+url = BASE_URL + "appid=" + API_KEY + "&Q=" + CITY
+response= requests.get(url).json()
+
+print(response)
+
+# This should work
+
+From here I'll know it works then need to integrate it into the webpage.
+Partial testing done
+#https://www.youtube.com/watch?v=9P5MY_2i7K8
+
+12/18/23:
+I have registered to get an api key, wrote up some test code and am waiting on my api
+key to be activated, this should happen automatically but may take up to 2 hours after
+Check back on this by running the weatherget.py scripts in the test directory on 12/19/23
+
+
+
+django-projects/mysite/register/forms.py # The model if part of the django built in stuff
+The question is how do I want to integrate this with the website?
+I could collect user data when they create an account, adding a 'City' field to the form
+Then pull that data after they login to populate the weather app
+
+Though I think I like the idea of using the users ip address as their location data so 
+weather information can be provided regardless of user log state.
+
+Alternatly I could do both, write in an option for a user to choose their location or if the 
+user has not made a selection it will default to using your ip address' location for weather.
+
+
+
+

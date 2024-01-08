@@ -1,0 +1,49 @@
+This file will function as general notes on the weather api integration project.
+
+In this project we are using open weather map .org
+Signing to get your key or generate a new one
+https://home.openweathermap.org/users/sign_in
+FYI, It may take up to 24 hours before your key is activated.
+
+Read the docs, current weather data.
+https://openweathermap.org/current
+
+At some point this API went from accepting city name to only accepting lat/lon data, this does require a bit more leg work on our end
+but with the same api key we can access a geocoding api which will make this easier for us. This should convert city names and/or zip
+codes to lat/lon data.
+
+An issue I have run into is putting "Tucson" into the geocoder and getting South Tucson back from the weather api.
+I'll have to look into this issue further.
+
+
+For final implimentation the weather api does not update more often then every 10 minutes, so maybe do the call to get the data only
+after that much time has passed? Not yet sure how to impliment this.
+
+
+The weather api returns tempurature numbers in Kelvin
+
+
+The youtube tut I'm working from has a function built to query the api, then sorts the return data into a list and dictionary
+which is returned by the function, for use later when building the webpage.
+
+
+
+I have finished the youtube tut, and am running into an error with the api key.
+I believe I can solve this error be placing the key directly into the views file, instead of trying to obfuscate the text
+by was of importing it or reading it from a txt file. But I don't want to do that.
+If I try my first version where I'm opening the apikey.txt file and populating the API_KEY variable django says it can't find the file
+If I turn the api key into a module django can't find the module when rendering the webpage.
+
+Either solution works perfectly when tested independantly of the webpage.
+
+Problem statement, How can I hide an api key with django? Maybe there is a better way I haven't thought of.
+
+Maybe?
+https://stackoverflow.com/questions/17080891/in-django-import-error-occurred-as-module-not-found
+
+
+
+
+Django tut for weather app integration.
+https://www.youtube.com/watch?v=lyeK0aE_qRg
+

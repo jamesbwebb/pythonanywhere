@@ -33,6 +33,7 @@ urlpatterns = [
     path('learn/', include('learnkana.urls')),
     path('register/', v.register, name="register"),
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
+    path('weather', include("weather_app.urls"))
 
 #    path('signup/', v.register, name="register"), # Redirect
 #    path('main/', include('main.urls')),

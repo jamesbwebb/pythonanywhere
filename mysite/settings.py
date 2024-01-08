@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 #    'social_django_mongoengine', # This wasn't mentioned in the coursera tut
     'taggit',
     'home.apps.HomeConfig',
+    'weather_app'
 
 ]
 
@@ -183,7 +184,7 @@ AUTHENTICATION_BACKENDS = (
 # storage
 
 
-LOGIN_URL = 'accounts/login/'
+LOGIN_URL = 'https://jameswebb.pythonanywhere.com/accounts/login/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'accounts/login/'

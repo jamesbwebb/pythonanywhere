@@ -36,9 +36,10 @@
 {% endif %}
 <p><br>
 <!-- Price: {{ ads.price }}<br><br> This is no longer inside the project's scope. -->
-{{ ads.text }}<br><br>
+<!-- I need these to scale to window and be scrollable -->
+<pre class="description">{{ ads.text }}</pre><br><br>
 
-<pre>{{ ads.ptext }}</pre><br><br>
+<pre class="description">{{ ads.ptext }}</pre><br><br>
 
 {% if ads.tags.all %}
 <p>Tags:
